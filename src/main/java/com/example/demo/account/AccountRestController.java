@@ -22,6 +22,6 @@ public class AccountRestController {
     @Operation(summary = "회원가입", description = "SignUpDTO 를 받아서 회원가입 진행")
     public ResponseEntity<?> signup(@RequestPart @Valid AccountRequest.SignUpDTO requestDTO, Errors errors) {
         accountService.signup(requestDTO);
-        return ResponseEntity.ok().body(ApiUtils.success(true));
+        
     }
 }
