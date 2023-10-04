@@ -62,4 +62,27 @@ public class AccountTest {
         Assertions.assertThat(account.getUid())
                 .isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("실패 테스트")
+    void test2() {
+        Account account = Account.builder()
+                .uid(1)
+                .email("anjdal64@gmail.com")
+                .password("asdf1234!")
+                .firstname("Jin")
+                .lastname("Seung")
+                .country("Korea")
+                .age(21)
+                .role(Account.Role.MENTOR)
+                .build();
+
+        // account save
+        accountJPARepository.save(account);
+
+        // find
+        Account account1 = accountJPARepository.findById(account.getUid()).get();
+        Assertions.assertThat(account.getUid())
+                .isEqualTo(3);
+    }
 }
